@@ -1,0 +1,500 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════
+   Peak Finder — Design System
+   Adventure + Premium Tour & Travel Theme
+   ═══════════════════════════════════════════════ */
+
+@theme {
+  /* Typography */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Navy Palette */
+  --color-navy-950: #060e1a;
+  --color-navy-900: #0a1628;
+  --color-navy-800: #0f1d32;
+  --color-navy-700: #162a45;
+  --color-navy-600: #1e3a5f;
+  --color-navy-500: #2a4f7a;
+  --color-navy-400: #3d6a9e;
+  --color-navy-300: #6b9cd4;
+  --color-navy-200: #a3c4e8;
+  --color-navy-100: #d4e3f5;
+  --color-navy-50: #edf3fa;
+
+  /* Forest Green */
+  --color-forest-900: #0a2e1a;
+  --color-forest-800: #113d24;
+  --color-forest-700: #1a5632;
+  --color-forest-600: #1e7a45;
+  --color-forest-500: #22a559;
+  --color-forest-400: #34d474;
+  --color-forest-300: #6ee6a0;
+  --color-forest-200: #a8f0c6;
+  --color-forest-100: #d5f8e4;
+  --color-forest-50: #edfcf3;
+
+  /* Orange Accent */
+  --color-accent-900: #7a2e0f;
+  --color-accent-800: #9a3a14;
+  --color-accent-700: #c44d1a;
+  --color-accent-600: #e55c22;
+  --color-accent-500: #ff6b35;
+  --color-accent-400: #ff8c5a;
+  --color-accent-300: #ffad82;
+  --color-accent-200: #ffcfb0;
+  --color-accent-100: #ffe8d6;
+  --color-accent-50: #fff5ee;
+
+  /* Warm Neutrals */
+  --color-warm-900: #1a1814;
+  --color-warm-800: #2d2a24;
+  --color-warm-700: #44403a;
+  --color-warm-600: #5c574f;
+  --color-warm-500: #78726a;
+  --color-warm-400: #9a948c;
+  --color-warm-300: #bcb7af;
+  --color-warm-200: #ddd9d3;
+  --color-warm-100: #edeae6;
+  --color-warm-50: #f8f6f3;
+}
+
+/* ═══════════════════════════════════
+   Base & Reset
+   ═══════════════════════════════════ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #1a1814;
+  background-color: #f8f6f3;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* ═══════════════════════════════════
+   Custom Scrollbar
+   ═══════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a1628;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a5632;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #22a559;
+}
+
+/* ═══════════════════════════════════
+   Animations
+   ═══════════════════════════════════ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes count-up {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Utility Classes */
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.7s ease-out forwards;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.7s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Stagger children */
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* ═══════════════════════════════════
+   Glassmorphism
+   ═══════════════════════════════════ */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-dark {
+  background: rgba(10, 22, 40, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* ═══════════════════════════════════
+   Card Hover Effects
+   ═══════════════════════════════════ */
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(10, 22, 40, 0.15);
+}
+
+.img-zoom {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.img-zoom:hover {
+  transform: scale(1.08);
+}
+
+/* ═══════════════════════════════════
+   Gradient Utilities
+   ═══════════════════════════════════ */
+.gradient-hero {
+  background: linear-gradient(
+    135deg,
+    rgba(10, 22, 40, 0.85) 0%,
+    rgba(26, 86, 50, 0.6) 50%,
+    rgba(10, 22, 40, 0.75) 100%
+  );
+}
+
+.gradient-section {
+  background: linear-gradient(180deg, #f8f6f3 0%, #edf3fa 100%);
+}
+
+.gradient-dark {
+  background: linear-gradient(180deg, #0a1628 0%, #0f1d32 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, #ff6b35 0%, #e55c22 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ff6b35, #e55c22, #ff8c5a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════════════════════════════════
+   Buttons
+   ═══════════════════════════════════ */
+.btn-primary {
+  background: linear-gradient(135deg, #ff6b35 0%, #e55c22 100%);
+  color: white;
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  letter-spacing: 0.02em;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.35);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+  background: #25d366;
+  color: white;
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  border: none;
+  cursor: pointer;
+}
+.btn-whatsapp:hover {
+  background: #1fb855;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+}
+
+/* ═══════════════════════════════════
+   WhatsApp Floating Button
+   ═══════════════════════════════════ */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #25d366;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  animation: pulse-glow 2s ease-in-out infinite;
+  text-decoration: none;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+}
+
+/* ═══════════════════════════════════
+   Navbar
+   ═══════════════════════════════════ */
+.navbar-transparent {
+  background: transparent;
+  transition: all 0.3s ease;
+}
+.navbar-solid {
+  background: rgba(10, 22, 40, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* ═══════════════════════════════════
+   Section Divider
+   ═══════════════════════════════════ */
+.section-divider {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b35, #e55c22);
+  border-radius: 2px;
+}
+
+/* ═══════════════════════════════════
+   Lightbox
+   ═══════════════════════════════════ */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(6, 14, 26, 0.92);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ═══════════════════════════════════
+   Mobile Menu
+   ═══════════════════════════════════ */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 14, 26, 0.5);
+  z-index: 9990;
+  animation: fadeIn 0.3s ease;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 280px;
+  background: linear-gradient(180deg, #0a1628 0%, #0f1d32 100%);
+  z-index: 9995;
+  padding: 2rem;
+  animation: slideInRight 0.3s ease;
+  overflow-y: auto;
+}
+
+/* ═══════════════════════════════════
+   Form Inputs
+   ═══════════════════════════════════ */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #ddd9d3;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: #1a1814;
+  background: white;
+  transition: all 0.3s ease;
+  font-family: var(--font-sans);
+}
+.form-input:focus {
+  outline: none;
+  border-color: #ff6b35;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
+}
+.form-input::placeholder {
+  color: #9a948c;
+}
+
+.form-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #ddd9d3;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: #1a1814;
+  background: white;
+  transition: all 0.3s ease;
+  font-family: var(--font-sans);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235c574f' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+.form-select:focus {
+  outline: none;
+  border-color: #ff6b35;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
+}
+
+/* ═══════════════════════════════════
+   Itinerary Timeline
+   ═══════════════════════════════════ */
+.timeline-line {
+  position: absolute;
+  left: 19px;
+  top: 40px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #ff6b35, #1a5632);
+}
+
+.timeline-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b35, #e55c22);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+  z-index: 1;
+  position: relative;
+  font-family: var(--font-heading);
+}
